@@ -6,7 +6,7 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/grpclog"
 	"os"
-	"reverss/grpc/proto"
+	"reverss/proto"
 )
 
 func main() {

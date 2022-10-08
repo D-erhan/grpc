@@ -5,8 +5,12 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/grpclog"
 	"net"
-	"reverss/grpc/proto"
+	"reverss/proto"
 )
+
+type server struct {
+	proto.ReverseServer
+}
 
 func main() {
 	listener, err := net.Listen("tcp", ":5300")
@@ -21,8 +25,6 @@ func main() {
 	proto.RegisterReverseServer(grpcServer, &server{})
 	grpcServer.Serve(listener)
 }
-
-type server struct{}
 
 func (s *server) Do(c context.Context, request *proto.Request) (response *proto.Response, err error) {
 	n := 0
